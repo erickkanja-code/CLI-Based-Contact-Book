@@ -35,7 +35,16 @@ def view_contact(cursor, name):
     cursor.execute(view_contact_query, value)
     return cursor.fetchone()
 
+def delete_contact(cursor, name):
+    delete_contact_query = "DELETE FROM contact_details WHERE name=%s"
+    value = (name,)
+    cursor.execute(delete_contact_query, value)
+
+    
+
 
 
 # contact1 = Contact()
-print(view_contact(cursor, 'Erick'))
+print(view_all_contacts(cursor))
+print(delete_contact(cursor, 'Erick'))
+print(view_all_contacts(cursor))
