@@ -23,18 +23,19 @@ class Contact:
         self.values = (self.name, self.phone, self.email)
         cursor.execute(insert_data_query, self.values)
         db.commit()
+
 def view_all_contacts(cursor):
     view_all_query = "SELECT * FROM contact_details"
     cursor.execute(view_all_query)
     return cursor.fetchall()
 
-# def view_contact(cursor, name):
-#     view_contact_query = "SELECT * FROM contact_details WHERE name=%s"
-#     cursor.execute(view_contact_query)
-#     return cursor.fetchone
-
+def view_contact(cursor, name):
+    view_contact_query = "SELECT * FROM contact_details WHERE name=%s"
+    value = (name,)
+    cursor.execute(view_contact_query, value)
+    return cursor.fetchone()
 
 
 
 # contact1 = Contact()
-print(view_all_contacts(cursor))
+print(view_contact(cursor, 'Erick'))
