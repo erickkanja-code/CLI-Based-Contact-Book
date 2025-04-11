@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import mysql.connector
 
 db = mysql.connector.connect(
