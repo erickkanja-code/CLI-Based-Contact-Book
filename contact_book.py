@@ -2,12 +2,15 @@
 
 import mysql.connector
 
-db = mysql.connector.connect(
-    host="localhost",
-    user="project1user",
-    password="P@ssword123",
-    database="Contact_Book"
+try:
+    db = mysql.connector.connect(
+        host="localhost",
+        user="project1user",
+        password="P@ssword123",
+        database="Contact_Book"
 )
+except Exception as e:
+    print(f"{e} Error connecting Mysql to Python")
 
 cursor = db.cursor()
 
@@ -43,14 +46,6 @@ def delete_contact(cursor, name):
     cursor.execute(delete_contact_query, value)
 
     
-
-
-
-# contact1 = Contact()
-# print(view_all_contacts(cursor))
-# print(delete_contact(cursor, 'Erick'))
-# print(view_all_contacts(cursor))
-# print(view_all_contacts(cursor))
 while True:
     a = int(input("Welcome to the Contact Book. Select and option\n1.) Add a contact\n2.) View all contacts\n3.) Search a contact by name\n4.) Delete a contact\n"))
     if a == 1:
