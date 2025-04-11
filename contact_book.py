@@ -26,6 +26,7 @@ class Contact:
             self.phone = int(input("Enter the phone number: "))
         except ValueError:
             print(f"Enter a number not a string: {ValueError}")
+            self.phone = int(input("Enter the phone number: "))
         self.email= input("Enter the email: ")
         insert_data_query = "INSERT INTO contact_details (name, phone_number, email) VALUES (%s, %s, %s)"
         self.values = (self.name, self.phone, self.email)
