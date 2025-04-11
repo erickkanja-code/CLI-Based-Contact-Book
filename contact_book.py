@@ -21,12 +21,18 @@ cursor = db.cursor()
 
 class Contact:
     def __init__(self):
-        self.name = input("Enter the name: ")
-        try:
-            self.phone = int(input("Enter the phone number: "))
-        except ValueError:
-            print(f"Enter a number not a string: {ValueError}")
-            self.phone = int(input("Enter the phone number: "))
+        while True:
+            self.name = input("Enter the name: ")
+            if self.name.isdigit():
+                print("Please enter a valid name and not a number:")
+            else:
+                break
+        while True:
+            try:
+                self.phone = int(input("Enter the phone number: "))
+                break
+            except ValueError:
+                print(f"Enter a number not a string: {ValueError}") 
         self.email= input("Enter the email: ")
         insert_data_query = "INSERT INTO contact_details (name, phone_number, email) VALUES (%s, %s, %s)"
         self.values = (self.name, self.phone, self.email)
